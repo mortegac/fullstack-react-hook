@@ -28,6 +28,8 @@ ul li{
   padding: 10px;
 }
 ul li span{ color: gray; display: block; padding-top:5px;}
+i{ color: gray;}
+span{ color: green;}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
