@@ -1,26 +1,17 @@
 ## Taller Reacjs - Hooks
 
-# Hooks :  useState
+# Hooks :  useEffect
 
-Permite el manejo de estados en componentes funcionales.
+Permite llevar a cabo efectos secundarios (side effects)  en componentes funcionales.
+
 
 Ejemplo:
 
 ```
-const Header = (props) => {
-  
-  const [count, setCount] = useState(0);
-
-  return(
-    <>
-      <h1>{props.title}</h1>
-      <h6>Contador: {count}</h6>
-      <button 
-        onClick={() => setCount(count + 1)}>
-        Sumar contador
-      </button>
-    </>
-)}
+useEffect( 
+    function persistForm() {
+        localStorage.setItem('formData', name); 
+});
 ```
 
 ## Configuración

@@ -23,6 +23,11 @@ button{
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
+ul li{ 
+  text-align: left;
+  padding: 10px;
+}
+ul li span{ color: gray; display: block; padding-top:5px;}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
