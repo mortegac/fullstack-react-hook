@@ -1,17 +1,43 @@
 ## Taller Reacjs - Hooks
 
-# Hooks :  useEffect
+# Hooks :  custom Hooks
 
-Permite llevar a cabo efectos secundarios (side effects)  en componentes funcionales.
-
+Permite crear hooks personalizados
 
 Ejemplo:
 
 ```
-useEffect( 
-    function persistForm() {
-        localStorage.setItem('formData', name); 
-});
+const useSize = () => {
+
+  const [ width, setWidth ] = useState(window.innerWidth);
+  const [ height, setHeight ] = useState(window.innerHeight);
+
+  //Agregar listener
+  const handleResize = () => {
+
+    setWidth(window.innerWidth);
+    setHeight(window.innerHeight);
+  }
+
+  useEffect(() => {
+
+    window.addEventListener('resize', handleResize)
+
+
+    return () => {
+
+      window.removeEventListener('resize', handleResize)
+
+    }
+  })
+
+
+  return {
+    width,
+    height
+  }
+
+}
 ```
 
 ## Configuración

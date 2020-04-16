@@ -22,7 +22,7 @@ const Header = (props) => {
     </>
 )}
 
-const UserList = (props) => {
+const UserList = () => {
 
   const [list, setList] = useState([]);
   
@@ -52,15 +52,56 @@ const UserList = (props) => {
     </>
 )}
 
+
+const useSize = () => {
+
+  const [ width, setWidth ] = useState(window.innerWidth);
+  const [ height, setHeight ] = useState(window.innerHeight);
+
+  //Agregar listener
+  const handleResize = () => {
+
+    setWidth(window.innerWidth);
+    setHeight(window.innerHeight);
+  }
+
+  useEffect(() => {
+
+    //  Se debe limpiar el listener con cada ejecución
+    window.addEventListener('resize', handleResize)
+
+
+    // Se dispara antes que la función principal se dispare
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+    
+  }, [] )
+
+
+  return {
+    width,
+    height
+  }
+
+}
 const App = () => {
+
+  const { width, height} = useSize();
+
   return (
     <div className="App">
       <Header title="Hook useState" />
+      <h2>
+        <span><i>width = </i>{width} px</span> <br />
+        <span><i>height = </i>{height} px</span>
+      </h2>
 
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
 
         <UserList/>
+
 
       </header>
     </div>
