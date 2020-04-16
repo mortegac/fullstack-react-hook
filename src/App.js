@@ -1,8 +1,10 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import axios from 'axios';
 
 import logo from './logo.svg';
 import './App.css';
+
+const MyContext = React.createContext();
 
 const Header = (props) => {
 
@@ -85,26 +87,80 @@ const useSize = () => {
   }
 
 }
+
+// Ejemplpo de Context
+
+const Hijo = () => { 
+  return(
+    <div>
+      <h5>Hijo</h5>
+      <Nieto/>
+    </div>
+  )
+}
+
+// FORMA TRADICIONAL DE CONSUMIR EL CONTEXT
+// const Nieto = () => (
+    // <MyContext.Consumer>
+    // {
+    //    (context) => (
+    //       <div>
+    //         <h5>Nieto</h5>
+    //         <h4>
+    //           <span><i>width = </i>{context.width} px</span> <br />
+    //           <span><i>height = </i>{context.height} px</span>
+    //         </h4>
+    //       </div>
+
+    //    )
+    // }
+    // </MyContext.Consumer>
+// )
+
+const Nieto = () => {
+
+  // const context = useContext(MyContext)
+  const { width, height } = useContext(MyContext)
+
+
+return(
+  <div>
+    <h5>Nieto</h5>
+    <h4>
+    <span><i>width = </i>{ width } px</span> <br />
+    <span><i>height = </i>{ height } px</span>
+    </h4>
+    </div>
+)
+}
+
+
 const App = () => {
 
   const { width, height} = useSize();
 
   return (
-    <div className="App">
-      <Header title="Hook useState" />
-      <h2>
-        <span><i>width = </i>{width} px</span> <br />
-        <span><i>height = </i>{height} px</span>
-      </h2>
+    <MyContext.Provider value={{ width, height }}>
+      <div className="App">
+        <Header title="Hook useState" />
+        <h2>
+          <span><i>width = </i>{width} px</span> <br />
+          <span><i>height = </i>{height} px</span>
+        </h2>
 
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          
+          <hr/>
+          <Hijo/>
+          <hr/>
 
-        <UserList/>
+          <UserList/>
 
 
-      </header>
-    </div>
+        </header>
+      </div>
+    </MyContext.Provider>  
   );
 }
 
