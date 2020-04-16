@@ -1,6 +1,29 @@
 ## Taller Reacjs - Hooks
 
-# Configuración
+# Hooks :  useState
+
+Permite el manejo de estados en componentes funcionales.
+
+Ejemplo:
+
+```
+const Header = (props) => {
+  
+  const [count, setCount] = useState(0);
+
+  return(
+    <>
+      <h1>{props.title}</h1>
+      <h6>Contador: {count}</h6>
+      <button 
+        onClick={() => setCount(count + 1)}>
+        Sumar contador
+      </button>
+    </>
+)}
+```
+
+## Configuración
 .- Instalar  [Nodejs versión LTS](https://nodejs.org/es/)
 
 .- Instalar Manejador de dependencias [Yarn](https://yarnpkg.com)
@@ -10,7 +33,7 @@
 
 
 
-# Creación App Base
+## Creación App Base
 .- Creación de la App base y entorno de configuración:
 
 ```
@@ -47,7 +70,7 @@ cd my-app && yarn start
 ```
 
 
-# Documentación: 
+## Documentación: 
 .- [create-react-app](https://github.com/facebook/create-react-app)
 
 .- [Reactjs](https://es.reactjs.org/)
