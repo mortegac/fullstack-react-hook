@@ -1,8 +1,8 @@
 ## Taller Reacjs - Hooks
 
-# Hooks :  Custom Hooks
+# Hooks :  useRef
 
-Permite crear Hooks personalizados
+Permite Hooks personalizados
 
 
 Ejemplo:

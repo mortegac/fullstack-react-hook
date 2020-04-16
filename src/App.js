@@ -38,14 +38,14 @@ const reducer = ( state, action ) => {
 };
 
 
-
+const initialState = {
+    count : 0,
+    title: 'Hola'
+};
 
 const App = () => {
 
-  const [ state, dispatch ] = useReducer( reducer, { 
-    count : 0,
-    title: 'Hola'
-  } );
+  const [ state, dispatch ] = useReducer( reducer, initialState);
 
   const increment = () => {  dispatch({ type : 'INCREMENT'}) };
 
