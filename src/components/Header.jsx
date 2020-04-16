@@ -10,11 +10,11 @@ const Header = (props) => {
   return(
     <>
       <h1>{props.title}</h1>
-      <h6>Contador: {count}</h6>
+      {/* <h6>Contador: {count}</h6>
       <button 
         onClick={() => setCount(count + 1)}>
         Sumar contador
-      </button>
+      </button> */}
     </>
 )}
 

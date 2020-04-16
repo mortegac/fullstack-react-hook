@@ -1,62 +1,81 @@
-import React, {useRef} from 'react';
+import React, {useReducer} from 'react';
 
 import logo from './logo.svg';
 import './App.css';
 
-import {Context} from "./components/context";
-import Hijo from './components/Hijo';
+// import {Context} from "./components/context";
+// import Hijo from './components/Hijo';
 import Header from './components/Header';
-import UserList from './components/UserList'
+// import UserList from './components/UserList'
 
-import useSize from './components/useSize';
+// import useSize from './components/useSize';
+
+
+// Se debe utilizar una Función Pura
+// Dado los mismos parámetros de entrada 
+// El resultado siempre será el mismo resultado
+
+// dispatch({ type: 'INCREMENT'})
+const reducer = ( state, action ) => {
+
+   switch (action.type) {
+  
+    case 'INCREMENT':
+      return { 
+        ...state,
+        count: state.count + 1
+      }
+  
+    case 'DECREMENT':
+      return {
+        ...state,
+        count: state.count - 1
+      }
+  
+    default:
+      return state;
+  }
+};
+
+
 
 
 const App = () => {
 
-  const { width, height} = useSize();
-  const enlace = useRef();
+  const [ state, dispatch ] = useReducer( reducer, { 
+    count : 0,
+    title: 'Hola'
+  } );
 
-  const focus = () => enlace.current.focus();
-  const blur = () => enlace.current.blur();
+  const increment = () => {  dispatch({ type : 'INCREMENT'}) };
+
+  const decrement = () => {  dispatch({ type : 'DECREMENT'}) };
+
 
   return (
-    <Context.Provider value={{width, height}}>
+
       <div className="App">
-        <Header title="Hook useState" />
-        <h2>
-          <span><i>width = </i>{width} px</span> <br />
-          <span><i>height = </i>{height} px</span>
-        </h2>
+        <Header title="Hook useReducer" />
+       
 
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           
-          <hr/>
-          <Hijo/>
-          <hr/>
-
-          {/**************** useRef *****************************/}
-          <input
-            type='text'
-            placeholder='Ingrese un texto'
-            ref={enlace}
           
-          />
-          {/* <button onClick={ () => console.log('<useRef>',enlace)} >Habilitar Focus</button> */}
-          <button onClick={ focus } >Habilitar Focus</button>
-          <button onClick={ blur } >Habilitar Blur</button>
+
+          {/**************** useReducer *****************************/}
+
+            <h3>Cuenta: { state.count } </h3>
+          
+          <button onClick={ increment } >Incrementar</button>
+          <button onClick={ decrement } >Decrementar</button>
           
           {/**************** useRef *****************************/}
 
-          <UserList/>
-
-
-
-
-
+        
         </header>
       </div>
-    </Context.Provider>  
+
   );
 }
 
