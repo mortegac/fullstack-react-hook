@@ -22,7 +22,33 @@ button{
   -moz-backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
+  background-color: rgba(2, 133, 239, .8);
+  color: white;
+  text-align: center;
 }
+input{
+  width: 180px;
+  height: 60px;
+  margin-bottom: 10px;
+
+  font-size: 1rem;;
+  letter-spacing: 2px;
+  line-height: 2.5em;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  -moz-backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  padding: 10px;
+  text-align: center;
+}
+input:focus {
+  border: 15px solid green;
+}
+
+
+
 ul li{ 
   text-align: left;
   padding: 10px;
